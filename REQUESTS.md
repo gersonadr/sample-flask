@@ -65,7 +65,42 @@ or
 
 - transaction id
 
-## Balance
+## Holders and Balance
+
+### Get list of holders who interacted with the LP
+
+#### Request
+
+`https://api.bscscan.com/api?module=account&action=tokentx&address=0xffaac354BF590257CdDfAF46049555c8f5457430&page=1&startblock=0&endblock=999999999&sort=asc&apikey=V1SXBSXMIG95CKUZST79DRCD2NIFSFY279`
+
+or
+
+`https://api.etherscan.io/api?module=account&action=tokentx&address=0xffaac354BF590257CdDfAF46049555c8f5457430&page=1&startblock=0&endblock=999999999&sort=asc&apikey=S46JREZEKRV6PXR17C16GTRK2QVFBEEZ1D`
+
+or
+
+`https://api.polygonscan.com/api?module=account&action=tokentx&address=0xffaac354BF590257CdDfAF46049555c8f5457430&page=1&startblock=0&endblock=999999999&sort=asc&apikey=J7APK7P6QCB7EWCTA3FWA8DIG8PXWZFMX3`
+
+#### Parameters
+
+address - liquidity pool address
+token address
+startblock - last block this service returned
+
+#### Observations
+
+1. Black list addresses
+
+I have to build a list of ignored To/From addresses. For instance:
+
+- Null address: 0x0000000000000000000000000000000000000000
+- Reserved: 0x9c4350f527ff7f96b650ee894ae9103bdfec0432
+
+2. Filter contract address
+
+Make sure to filter results using "contractAddress" output = user's token address
+
+3. To/From are important, but I'm not able to detect a pattern yet. The txn hash doesn't appear on this endpoint, now the block number matches. :( To this first version, I won't differentiate between buy/sells, unless someone asks
 
 ### Get holder's balance on token
 
