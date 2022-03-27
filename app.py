@@ -1,7 +1,7 @@
 
 from flask import Flask
 from flask import render_template
-import compiler
+# import compiler
 import models
 import json
 
@@ -20,14 +20,14 @@ def gimme_obj():
     park_dict = models.convert_park_to_dict(park)
     return json.dumps(park_dict, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 
-@app.route("/price/<contract_address>")
-def compile_sol(initial_supply):
+# @app.route("/price/<contract_address>")
+# def compile_sol(initial_supply):
 
-    contract_file = "./contracts/OurToken.sol"
-    return compiler.compile(contract_file, initial_supply)
+#     contract_file = "./contracts/OurToken.sol"
+#     return compiler.compile(contract_file, initial_supply)
 
-@app.route("/compile/<initial_supply>")
-def compile_sol(initial_supply):
+# @app.route("/compile/<initial_supply>")
+# def compile_sol(initial_supply):
 
-    contract_file = "./contracts/OurToken.sol"
-    return compiler.compile(contract_file, initial_supply)
+#     contract_file = "./contracts/OurToken.sol"
+#     return compiler.compile(contract_file, initial_supply)
