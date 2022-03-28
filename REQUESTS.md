@@ -83,9 +83,9 @@ or
 
 #### Parameters
 
-address - liquidity pool address
-token address
-startblock - last block this service returned
+- address - liquidity pool address
+- token address
+- startblock - last block this service returned
 
 #### Observations
 
@@ -100,7 +100,7 @@ I have to build a list of ignored To/From addresses. For instance:
 
 Make sure to filter results using "contractAddress" output = user's token address
 
-3. To/From are important, but I'm not able to detect a pattern yet. The txn hash doesn't appear on this endpoint, now the block number matches. :( To this first version, I won't differentiate between buy/sells, unless someone asks
+3. To/From are important, but I'm not able to detect a pattern yet. The txn hash doesn't appear on this endpoint, nor the block number matches. :( To this first version, I won't differentiate between buy/sells, unless someone asks
 
 ### Get holder's balance on token
 

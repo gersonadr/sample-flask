@@ -10,7 +10,7 @@ def get_price(chain_id, ref_token, my_token):
         return error(message="invalid my_token address: " + my_token)
 
     if not validator.is_chain_valid(chain_id):
-        return error(message="invalid chain_id: " + chain_id)
+        return error(message="invalid chain_id: " + str(chain_id))
 
     params = {
         "fromTokenAddress": ref_token,
