@@ -22,7 +22,7 @@ def get_price(chain_id, ref_token, my_token):
     
     if r.ok:
         response = r.json()
-        return 1/float(response["toTokenAmount"])
+        return '{:.20f}'.format(1 / float(response["toTokenAmount"]))
 
     else:
         return error(r)

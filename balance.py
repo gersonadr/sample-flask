@@ -33,7 +33,9 @@ def get_holder_balance(chain_id, token_address, wallet_address):
     r = call_with_retry(utils.get_explorer_endpoint(chain_id), params=params)
     
     if r.ok:
-        return r.json()
+        result = r.json()
+        return '{:.20f}'.format(float(float(result["result"])/ 10**18))
+
     else:
         return error(r)
 
