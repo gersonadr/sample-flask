@@ -8,7 +8,4 @@ class TestPrice(unittest.TestCase):
         result = price.get_price(56, '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE', '0x7EC1EdCB89343A8DF4329Ad94C174458225105aE')
 
         self.assertIsNotNone(result)
-        self.assertIsNotNone(result['fromToken'])
-        self.assertIsNotNone(result['toToken'])
-        self.assertIsNotNone(result['toTokenAmount'])
-        self.assertIsNotNone(int(result['toTokenAmount']), "Converable to number")
+        self.assertGreater(float(result), 0)

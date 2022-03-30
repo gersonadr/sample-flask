@@ -3,6 +3,7 @@ from flask import Flask
 from flask import render_template
 # import compiler
 import models
+import price
 import json
 
 
@@ -13,6 +14,9 @@ app = Flask(__name__)
 def hello_world():
     return render_template("index.html")
 
+@app.route("/price/<chain_id>/<ref_token>/<my_token>")
+def get_price(chain_id, ref_token, my_token):
+    return json.dumps(price.get_price(chain_id, ref_token, my_token))
 
 @app.route("/test")
 def gimme_obj():

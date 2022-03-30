@@ -21,7 +21,9 @@ def get_price(chain_id, ref_token, my_token):
     r = call_with_retry(f"https://api.1inch.io/v4.0/{chain_id}/quote", params=params)
     
     if r.ok:
-        return r.json()
+        response = r.json()
+        return 1/float(response["toTokenAmount"])
+
     else:
         return error(r)
 

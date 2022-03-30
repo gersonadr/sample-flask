@@ -2,7 +2,6 @@ from requests.adapters import HTTPAdapter, Retry
 import validator
 import requests
 import utils
-import json
 
 '''
 In an attempt to filter out the noise on the blockchain, I'll maintain a list of addresses, 
