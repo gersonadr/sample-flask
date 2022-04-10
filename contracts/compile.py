@@ -3,6 +3,8 @@ from jinja2 import Template
 import argparse
 import solcx
 
+# python compile.py --supply variable --pausable True
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--supply", help="Indicates the token supply is fixed or variable")
 parser.add_argument("--pausable", help="Indicates the token can be paused by owner")
