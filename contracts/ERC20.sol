@@ -1,5 +1,6 @@
-// contracts/BEP20.sol
 // SPDX-License-Identifier: MIT
+// OpenZeppelin Contracts (last updated v4.5.0) (token/ERC20/ERC20.sol)
+
 pragma solidity ^0.8.0;
 
 /**
@@ -328,7 +329,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
         returns (bool)
     {
         address owner = _msgSender();
-        _approve(owner, spender, allowance(owner, spender) + addedValue);
+        _approve(owner, spender, _allowances[owner][spender] + addedValue);
         return true;
     }
 
@@ -352,7 +353,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
         returns (bool)
     {
         address owner = _msgSender();
-        uint256 currentAllowance = allowance(owner, spender);
+        uint256 currentAllowance = _allowances[owner][spender];
         require(
             currentAllowance >= subtractedValue,
             "ERC20: decreased allowance below zero"
@@ -478,7 +479,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
     }
 
     /**
-     * @dev Updates `owner` s allowance for `spender` based on spent `amount`.
+     * @dev Spend `amount` form the allowance of `owner` toward `spender`.
      *
      * Does not update the allowance amount in case of infinite allowance.
      * Revert if not enough allowance is available.
@@ -541,14 +542,4 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
         address to,
         uint256 amount
     ) internal virtual {}
-}
-
-contract BEP20NoDependencies is ERC20 {
-    constructor(
-        uint256 initialSupply,
-        string name,
-        string ticker
-    ) ERC20(name, string) {
-        _mint(msg.sender, initialSupply);
-    }
 }
