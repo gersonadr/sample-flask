@@ -544,11 +544,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
 }
 
 contract BEP20NoDependencies is ERC20 {
-    constructor(
-        uint256 initialSupply,
-        string name,
-        string ticker
-    ) ERC20(name, string) {
+    constructor(uint256 initialSupply) ERC20("BPTRaw", "BP2") {
         _mint(msg.sender, initialSupply);
     }
 }

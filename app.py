@@ -1,7 +1,7 @@
 
 from flask import Flask, request
 from flask import render_template
-# import compiler
+import compiler
 import models
 import holder
 import price
@@ -39,8 +39,8 @@ def gimme_obj():
 #     contract_file = "./contracts/OurToken.sol"
 #     return compiler.compile(contract_file, initial_supply)
 
-# @app.route("/compile/<initial_supply>")
-# def compile_sol(initial_supply):
+@app.route("/compile/<initial_supply>")
+def compile_sol(initial_supply):
 
-#     contract_file = "./contracts/OurToken.sol"
-#     return compiler.compile(contract_file, initial_supply)
+    contract_file = "./contracts/OurToken.sol"
+    return compiler.compile(contract_file, initial_supply)
