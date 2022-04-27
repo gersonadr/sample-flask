@@ -1,6 +1,7 @@
 
 from flask import Flask, request
 from flask import render_template
+from urllib.parse import unquote
 import compiler
 import models
 import holder
@@ -39,8 +40,16 @@ def gimme_obj():
 #     contract_file = "./contracts/OurToken.sol"
 #     return compiler.compile(contract_file, initial_supply)
 
-@app.route("/compile/<initial_supply>")
-def compile_sol(initial_supply):
+@app.route("/compile/<name>/<ticker>/<supply_type>/<initial_supply>/<is_pausable>")
+def compile_sol(name, ticker, supply_type, initial_supply, is_pausable):
 
-    contract_file = "./contracts/OurToken.sol"
-    return compiler.compile(contract_file, initial_supply)
+    if is_pausable == "false":
+        is_pausable = False
+    else:
+        is_pausable = True
+
+    initial_supply = int(initial_supply) * 10**6
+
+    print (str(initial_supply))
+
+    return compiler.compile(unquote(name), unquote(ticker), supply_type, initial_supply, is_pausable)

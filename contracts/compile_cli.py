@@ -3,9 +3,12 @@ from jinja2 import Template
 import argparse
 import solcx
 
-# python compile.py --supply variable --pausable True
+# python compile_cli.py --supply variable --pausable True
 
 parser = argparse.ArgumentParser()
+parser.add_argument("--name", help="Token name")
+parser.add_argument("--ticker", help="Token ticker")
+parser.add_argument("--initial_supply", help="Amount of tokens to pre-mint")
 parser.add_argument("--supply", help="Indicates the token supply is fixed or variable")
 parser.add_argument("--pausable", help="Indicates the token can be paused by owner")
 parser.add_argument("--snapshot", help="Indicates the owner can take a snapshot of holders on-chain")
@@ -36,6 +39,8 @@ if args['supply'] == 'variable':
     """
 
     extends += ', ERC20Burnable, Ownable'
+else:
+    import_mintable = ""
 
 #if pausable
 if args['pausable']:
@@ -63,6 +68,8 @@ if args['pausable']:
     """
 
     extends += ', Pausable'
+else:
+    import_pausable = ""
 
 # if snapshot, FUTURE FEATURE
 if args['snapshot']:
@@ -73,6 +80,8 @@ if args['vote']:
     raise Exception('Voting not implemented. Crashing')
 
 data = {
+    "name": args['name'],
+    "ticker": args['ticker'],
     "import_ERC20": erc20,
     "import_mintable": import_mintable,
     "import_pausable": import_pausable,
@@ -102,19 +111,11 @@ compiled_sol = compile_standard(
 
 result = compiled_sol["contracts"]["CustomToken.sol"]["CustomToken"]["evm"]["bytecode"]["object"]
 
-initialSupplyInt = 20000000
-name = "Gerson Token"
-ticker = "GT2"
+if args['initial_supply']:
+    initial_supply_int = int(args['initial_supply'])
+else:
+    initial_supply_int = 0
 
-result += str(hex(initialSupplyInt)[2:]).zfill(64)
-
-result += "000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000007"
-result += "4d79546f6b656e0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000034d544b0000000000000000000000000000000000000000000000000000000000"
-
-# print (result)
-#print(bytes.fromhex('034d544b').decode('utf-8'))
-# MTK
-#print(bytes.fromhex('4d79546f6b656e').decode('utf-8'))
-# MyToken
+result += str(hex(initial_supply_int)[2:]).zfill(64)
 
 print (result)
