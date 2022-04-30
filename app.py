@@ -42,11 +42,11 @@ def gimme_obj():
 
 @app.route("/price/ETH/USD")
 def get_ETH_price():
-    return price.get_ETH_price()
+    return str(price.get_ETH_price())
 
 @app.route("/price/BNB/USD")
 def get_BNB_price():
-    return price.get_BNB_price()
+    return str(price.get_BNB_price())
 
 @app.route("/compile/<name>/<ticker>/<supply_type>/<initial_supply>/<is_pausable>")
 def compile_sol(name, ticker, supply_type, initial_supply, is_pausable):
