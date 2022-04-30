@@ -40,6 +40,14 @@ def gimme_obj():
 #     contract_file = "./contracts/OurToken.sol"
 #     return compiler.compile(contract_file, initial_supply)
 
+@app.route("/price/ETH/USD")
+def get_ETH_price():
+    return price.get_ETH_price()
+
+@app.route("/price/BNB/USD")
+def get_BNB_price():
+    return price.get_BNB_price()
+
 @app.route("/compile/<name>/<ticker>/<supply_type>/<initial_supply>/<is_pausable>")
 def compile_sol(name, ticker, supply_type, initial_supply, is_pausable):
 
