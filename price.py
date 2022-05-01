@@ -32,14 +32,14 @@ def get_ETH_price():
     params = {
         "fromTokenAddress": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
         "toTokenAddress": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
-        "amount": 100000000,
+        "amount": 1000000000000000000,
         "slippage": 0
     }
 
     r = call_with_retry(f"https://api.1inch.io/v4.0/56/quote", params=params)
     if r.ok:
         response = r.json()
-        return float(response["toTokenAmount"])/10**8
+        return float(response["toTokenAmount"]) / 10**18
 
     else:
         return error(r)
@@ -49,14 +49,14 @@ def get_BNB_price():
     params = {
         "fromTokenAddress": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
         "toTokenAddress": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
-        "amount": 100000000,
+        "amount": 1000000000000000000,
         "slippage": 0
     }
 
     r = call_with_retry(f"https://api.1inch.io/v4.0/56/quote", params=params)
     if r.ok:
         response = r.json()
-        return float(response["toTokenAmount"])/10**8
+        return float(response["toTokenAmount"])/10**18
 
     else:
         return error(r)
