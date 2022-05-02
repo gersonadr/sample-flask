@@ -22,6 +22,48 @@ def get_explorer_endpoint(chain_id):
 
     return chain_urls[chain_id_numeric]
 
+def get_rpc_endpoint(chain_id):
+    
+    if not validator.is_chain_valid(chain_id):
+        return error("invalid chain id:" + str(chain_id))
+
+    chain_urls = {
+        1: "",
+        3: "",
+        4: "",
+        5: "",
+        42: "",
+        56: "",
+        97: "https://data-seed-prebsc-1-s1.binance.org:8545/",
+        137: "",
+        80001: ""
+    }
+
+    chain_id_numeric = int(chain_id)
+
+    return chain_urls[chain_id_numeric]
+
+def get_router_address(chain_id):
+
+    if not validator.is_chain_valid(chain_id):
+        return error("invalid chain id:" + str(chain_id))
+
+    router_addresses = {
+        1: "",
+        3: "",
+        4: "",
+        5: "",
+        42: "",
+        56: "",
+        97: "0xD99D1c33F9fC3444f8101754aBC46c52416550D1",
+        137: "",
+        80001: ""
+    }
+
+    chain_id_numeric = int(chain_id)
+
+    return router_addresses[chain_id_numeric]
+
 def get_random_key(chain_id):
 
     if not validator.is_chain_valid(chain_id):

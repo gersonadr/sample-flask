@@ -1,4 +1,5 @@
 from requests.adapters import HTTPAdapter, Retry
+from web3 import Web3 
 import requests
 import validator
 
@@ -12,21 +13,25 @@ def get_price(chain_id, ref_token, my_token):
     if not validator.is_chain_valid(chain_id):
         return error(message="invalid chain_id: " + str(chain_id))
 
-    params = {
-        "fromTokenAddress": ref_token,
-        "toTokenAddress": my_token,
-        "amount": 1
-    }
+    # params = {
+    #     "fromTokenAddress": ref_token,
+    #     "toTokenAddress": my_token,
+    #     "amount": "1"
+    # }
 
-    r = call_with_retry(f"https://api.1inch.io/v4.0/{chain_id}/quote", params=params)
+    # r = call_with_retry(f"https://api.1inch.io/v4.0/{chain_id}/quote", params=params)
+
+    # print(r.json())
+
+    # if r.ok:
+    #     response = r.json()
+    #     return '{:.20f}'.format(1 / float(response["toTokenAmount"]))
+
+    # else:
+    #     return error(r)
+
+    return
     
-    if r.ok:
-        response = r.json()
-        return '{:.20f}'.format(1 / float(response["toTokenAmount"]))
-
-    else:
-        return error(r)
-
 def get_ETH_price():
 
     params = {

@@ -7,6 +7,7 @@ import models
 import holder
 import price
 import balance
+import blockchain
 import json
 
 app = Flask(__name__)
@@ -15,9 +16,14 @@ app = Flask(__name__)
 def hello_world():
     return render_template("index.html")
 
+#DEPRECATED - This uses 1inch REST API. Use /swap instead
 @app.route("/price/<chain_id>/<ref_token>/<my_token>")
 def get_price(chain_id, ref_token, my_token):
     return json.dumps(price.get_price(chain_id, ref_token, my_token))
+
+@app.route("/swap/<chain_id>/<ref_token>/<my_token>")
+def get_swap(chain_id, ref_token, my_token):
+    return json.dumps(blockchain.get_swap(chain_id, ref_token, my_token))
 
 @app.route("/holder/<chain_id>/<lp_address>/<token_address>/<start_block>")
 def get_holder(chain_id, lp_address, token_address, start_block):
