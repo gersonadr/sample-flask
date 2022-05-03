@@ -15,7 +15,7 @@ def get_swap(chain_id, address_from, address_to):
 
     router_instance = w3.eth.contract(address=router_address, abi=router_abi)
 
-    swap_rate = router_instance.functions.getAmountsOut(1000, [address_from, address_to]).call()
+    swap_rate = router_instance.functions.getAmountsOut(1, [address_from, address_to]).call()
 
     if swap_rate and len(swap_rate) == 2:
         return float(swap_rate[0]) / float(swap_rate[1])

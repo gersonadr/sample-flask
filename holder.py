@@ -85,7 +85,7 @@ def call_with_retry(path, params):
     s = requests.Session()
     retries = Retry(total=5, backoff_factor=1, status_forcelist=[502, 503, 504])
     s.mount('https://', HTTPAdapter(max_retries=retries))
-    return s.get(path, params=params)
+    return s.get(path, params=params, headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36"})
 
 def filter_out_block_addresses(txn, contract_address):
     if 'from' in txn and txn['from'].lower() in block_addresses:

@@ -64,6 +64,4 @@ def compile_sol(name, ticker, supply_type, initial_supply, is_pausable):
 
     initial_supply = int(initial_supply) * 10**6
 
-    print (str(initial_supply))
-
     return compiler.compile(unquote(name), unquote(ticker), supply_type, initial_supply, is_pausable)

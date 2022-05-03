@@ -94,8 +94,6 @@ contract = j2_template.render(data)
 
 solcx.install_solc("0.8.0")
 
-print (contract)
-
 compiled_sol = compile_standard(
     {
         "language": "Solidity",

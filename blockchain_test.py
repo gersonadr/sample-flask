@@ -11,3 +11,13 @@ class TestBlockchain(unittest.TestCase):
 
         self.assertIsNotNone(result)
         self.assertGreater(result, 0);
+
+    def test_swap_binance_testnet2(self):
+
+        address2 = "0x1651d5a7d1C02b890ba203EBBCb15498511A0604"
+        address1 = "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd"
+
+        result = blockchain.get_swap(97, address1, address2)
+
+        self.assertIsNotNone(result)
+        self.assertGreater(result, 0);
