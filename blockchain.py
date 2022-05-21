@@ -18,8 +18,8 @@ def get_swap(chain_id, address_from, address_to):
     swap_rate = router_instance.functions.getAmountsOut(1, [address_from, address_to]).call()
 
     if swap_rate and len(swap_rate) == 2:
-        return float(swap_rate[0]) / float(swap_rate[1])
+        return format(float(swap_rate[0]) / float(swap_rate[1]), '.20f')
 
-    return swap_rate
+    return 0
 
 # print (get_swap(97, '0x71E0C6DD765b990C8F53DaF753AB36064C481670', '0xC94B3ba0dD04726CF294CdC5f7BE973742eF989C'))

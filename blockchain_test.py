@@ -10,7 +10,7 @@ class TestBlockchain(unittest.TestCase):
         result = blockchain.get_swap(97, address1, address2)
 
         self.assertIsNotNone(result)
-        self.assertGreater(result, 0);
+        self.assertGreater(result, 0)
 
     def test_swap_binance_testnet2(self):
 
@@ -20,4 +20,4 @@ class TestBlockchain(unittest.TestCase):
         result = blockchain.get_swap(97, address1, address2)
 
         self.assertIsNotNone(result)
-        self.assertGreater(result, 0);
+        self.assertGreater(result, 0)

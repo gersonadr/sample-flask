@@ -23,7 +23,7 @@ def get_price(chain_id, ref_token, my_token):
 
 @app.route("/swap/<chain_id>/<ref_token>/<my_token>")
 def get_swap(chain_id, ref_token, my_token):
-    return json.dumps(blockchain.get_swap(chain_id, ref_token, my_token))
+    return str(blockchain.get_swap(chain_id, ref_token, my_token))
 
 @app.route("/holder/<chain_id>/<lp_address>/<token_address>/<start_block>")
 def get_holder(chain_id, lp_address, token_address, start_block):
