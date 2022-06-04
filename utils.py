@@ -28,12 +28,12 @@ def get_rpc_endpoint(chain_id):
         return error("invalid chain id:" + str(chain_id))
 
     chain_urls = {
-        1: "",
+        1: "https://mainnet.infura.io/v3/99937144516b4bc58d8424e65a93a462",
         3: "",
         4: "",
         5: "",
-        42: "",
-        56: "",
+        42: "https://kovan.infura.io/v3/99937144516b4bc58d8424e65a93a462",
+        56: "https://bsc-dataseed.binance.org/",
         97: "https://data-seed-prebsc-1-s1.binance.org:8545/",
         137: "",
         80001: ""
@@ -49,12 +49,12 @@ def get_router_address(chain_id):
         return error("invalid chain id:" + str(chain_id))
 
     router_addresses = {
-        1: "",
-        3: "",
-        4: "",
-        5: "",
-        42: "",
-        56: "",
+        1: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+        3: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+        4: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+        5: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+        42: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+        56: "0x10ED43C718714eb63d5aA57B78B54704E256024E",
         97: "0xD99D1c33F9fC3444f8101754aBC46c52416550D1",
         137: "",
         80001: ""
