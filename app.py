@@ -50,7 +50,7 @@ def get_BNB_price():
 
 @app.route("/env/<name>")
 def get_env_variable(name):
-    return os.environ(name)
+    return os.getenv(name)
 
 @app.route("/compile/<name>/<ticker>/<supply_type>/<initial_supply>/<is_pausable>")
 def compile_sol(name, ticker, supply_type, initial_supply, is_pausable):
