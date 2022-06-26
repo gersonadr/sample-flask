@@ -9,6 +9,7 @@ import price
 import balance
 import blockchain
 import json
+import os
 
 app = Flask(__name__)
 
@@ -33,13 +34,6 @@ def get_holder(chain_id, lp_address, token_address, start_block):
 def get_balance(chain_id, token_address, wallet_address):
     return json.dumps(balance.get_holder_balance(int(chain_id), token_address, wallet_address))
 
-
-@app.route("/test")
-def gimme_obj():
-    park = models.Park(1, "my_house", ["swings", "shop"], 50, 60)
-    park_dict = models.convert_park_to_dict(park)
-    return json.dumps(park_dict, default=lambda o: o.__dict__, sort_keys=True, indent=4)
-
 # @app.route("/price/<contract_address>")
 # def compile_sol(initial_supply):
 
@@ -53,6 +47,10 @@ def get_ETH_price():
 @app.route("/price/BNB/USD")
 def get_BNB_price():
     return str(price.get_BNB_price())
+
+@app.route("/env/<name>")
+def get_env_variable(name):
+    return os.environ(name)
 
 @app.route("/compile/<name>/<ticker>/<supply_type>/<initial_supply>/<is_pausable>")
 def compile_sol(name, ticker, supply_type, initial_supply, is_pausable):
