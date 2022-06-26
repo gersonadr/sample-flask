@@ -3,13 +3,12 @@ from flask import Flask, request
 from flask import render_template
 from urllib.parse import unquote
 import compiler
-import models
+import transfer
 import holder
 import price
 import balance
 import blockchain
 import json
-import os
 
 app = Flask(__name__)
 
@@ -48,9 +47,13 @@ def get_ETH_price():
 def get_BNB_price():
     return str(price.get_BNB_price())
 
-@app.route("/env/<name>")
-def get_env_variable(name):
-    return os.getenv(name)
+# @app.route("/env/<name>")
+# def get_env_variable(name):
+#     return os.getenv(name)
+
+@app.route("/transfer/bnb/<to_account>/<value>")
+def transfer_bnb(to_account, value):
+    return transfer.transfer_bnb(to_account, value)
 
 @app.route("/compile/<name>/<ticker>/<supply_type>/<initial_supply>/<is_pausable>")
 def compile_sol(name, ticker, supply_type, initial_supply, is_pausable):
