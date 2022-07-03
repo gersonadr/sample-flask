@@ -3,13 +3,13 @@ import os
 
 def transfer_bnb(to_account, value):
 
+    print (to_account, value)
     # bsc = "https://bsc-dataseed.binance.org/"
     # bsc = "https://data-seed-prebsc-1-s1.binance.org:8545/"
     
     bsc_endpoint = os.getenv("BNB_ENDPOINT")
     web3 = Web3(Web3.HTTPProvider(bsc_endpoint))
-    print (web3.isConnected())
-
+    
     from_account = os.getenv("BNB_WALLET")
 
     private = os.getenv("PRIVATE_KEY")
@@ -33,5 +33,5 @@ def transfer_bnb(to_account, value):
     tx_hash = web3.eth.sendRawTransaction(signed_tx.rawTransaction)
 
     transaction = web3.toHex(tx_hash)
-
+    
     return transaction

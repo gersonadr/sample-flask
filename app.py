@@ -8,6 +8,7 @@ import holder
 import price
 import balance
 import blockchain
+import gasestimator
 import json
 
 app = Flask(__name__)
@@ -66,3 +67,18 @@ def compile_sol(name, ticker, supply_type, initial_supply, is_pausable):
     initial_supply = int(initial_supply) * 10**6
 
     return compiler.compile(unquote(name), unquote(ticker), supply_type, initial_supply, is_pausable)
+
+@app.route("/estimate/<chain_id>/<name>/<ticker>/<supply_type>/<is_pausable>/<has_transfer>")
+def estimate_gas_create_contract(chain_id, name, ticker, supply_type, is_pausable, has_transfer):
+
+    if is_pausable == "false":
+        is_pausable = False
+    else:
+        is_pausable = True
+
+    gas_estimate = float(gasestimator.estimate_gas_create_contract(chain_id, name, ticker, supply_type, is_pausable))
+    
+    if has_transfer:
+        gas_estimate += float(gasestimator.estimate_gas_transfer(chain_id))
+
+    return str(gas_estimate)

@@ -1,0 +1,15 @@
+## Run Python tests
+
+python -m unittest price_test
+python -m unittest *_test.py
+
+## Start flask server
+
+flask run
+
+### add env variables
+
+BNB_ENDPOINT=https://data-seed-prebsc-1-s1.binance.org:8545/ BNB_WALLET=0xba6cb0a234606eF31fc5b85422ba07040a0019eE PRIVATE_KEY=d41c7334ba2d951a1b2145587065ac196f7fbd5bad80019896059433305037c3 flask run
+
+
+### how to test
