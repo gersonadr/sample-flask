@@ -52,9 +52,9 @@ def get_BNB_price():
 # def get_env_variable(name):
 #     return os.getenv(name)
 
-@app.route("/transfer/bnb/<to_account>/<value>")
-def transfer_bnb(to_account, value):
-    return transfer.transfer_bnb(to_account, value)
+# @app.route("/transfer/bnb/<to_account>/<value>")
+# def transfer_bnb(to_account, value):
+#     return transfer.transfer_bnb(to_account, value)
 
 @app.route("/compile/<name>/<ticker>/<supply_type>/<initial_supply>/<is_pausable>")
 def compile_sol(name, ticker, supply_type, initial_supply, is_pausable):
