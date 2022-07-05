@@ -96,7 +96,7 @@ def estimate_gas_create_contract(chain_id, name, ticker, supply_type, is_pausabl
 
     w3 = Web3(Web3.HTTPProvider(utils.get_rpc_endpoint(chain_id)))
 
-    my_address = os.getenv('BNB_WALLET') #any wallet will do
+    my_address = '0xF9F123D8b2C8202393a982eEf2228cC899d5556b' #any wallet will do
 
     bytecode += str(hex(1000)[2:]).zfill(64)
 
