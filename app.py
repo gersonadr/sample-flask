@@ -81,4 +81,11 @@ def estimate_gas_create_contract(chain_id, name, ticker, supply_type, is_pausabl
     if has_transfer:
         gas_estimate += float(gasestimator.estimate_gas_transfer(chain_id))
 
+    if chain_id == 1 or chain_id == 42:
+        onramp_fees = 0.002
+    else:
+        onramp_fees = 0.011
+        
+    gas_estimate += onramp_fees
+
     return str(gas_estimate)
